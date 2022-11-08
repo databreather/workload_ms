@@ -18,7 +18,6 @@ class RegisterController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'name' => ['required'],
-            'username' => ['required'],
             'email' => ['required','unique:users'],
             'password' => ['required'],
         ]);
@@ -28,7 +27,7 @@ class RegisterController extends Controller
             
             Auth::login($newUser);
     
-            return redirect('/dashboard')->with([
+            return redirect('/teaching_load')->with([
                 'type' => 'success',
                 'message' => 'You are logged in.'
             ]);

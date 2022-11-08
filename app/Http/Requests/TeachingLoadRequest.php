@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
-class UserRequest extends FormRequest
+class TeachingLoadRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +24,13 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'unique:users,email,' . optional($this->user)->id,],
-            'name' => ['required'],
-            'password' => (empty($this->user->password)) ? ['required', Password::defaults()] : '',
+            'course_name' => ['required'],
+            'course_code' => ['required'],
+            'nc' => ['required'],
+            'contact_hours' => ['required'],
+            'group_size' => ['required'],
+            'mgc' => ['required'],
+            'group_name' => ['required']
         ];
     }
 }

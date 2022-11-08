@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\TeachingLoadController;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -16,6 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
     
     Route::apiResource('users', UserController::class);
+    Route::apiResource('teaching_load', TeachingLoadController::class);
 
     Route::get('profile', ProfileController::class)->name('profile');
 });

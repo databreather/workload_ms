@@ -21,14 +21,14 @@ class LoginController extends Controller
 
         if(Auth::attempt($request->only('email', 'password'), $request->remember)) {
             session()->regenerate();
-            return redirect('/dashboard')->with([
+            return redirect('/teaching_load')->with([
                 'type' => 'success',
                 'message' => 'You are logged in.'
             ]);
         }
 
         throw ValidationException::withMessages([
-            'email' => 'The provide credentials does not match our record.',
+            'email' => 'Incorrect email or password.',
         ]);
     }
 

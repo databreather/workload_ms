@@ -5,7 +5,7 @@ import Base from '../../Layouts/Base'
 export default function Profile(props) {
     const { auth } = usePage().props;
 
-    const {data, setData, put, reset, errors} = useForm({ name: auth.user.name, email: auth.user.email, username: auth.user.username, address: auth.user.address, });
+    const {data, setData, put, reset, errors} = useForm({ name: auth.user.name, email: auth.user.email});
 
     const onChange = (e) => setData({ ...data, [e.target.id]: e.target.value });
 
@@ -62,12 +62,6 @@ export default function Profile(props) {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                            <label htmlFor="username" className="form-control-label">Username</label>
-                                            <input className="form-control" type="text" name='username' value={data.username} onChange={onChange} id="username" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="form-group">
                                             <label htmlFor="email" className="form-control-label">Email address</label>
                                             <input className="form-control" type="email" name='email' value={data.email} onChange={onChange} id="email" />
                                             </div>
@@ -82,14 +76,6 @@ export default function Profile(props) {
                                         </div>
                                         <hr className="horizontal dark" />
                                         <p className="text-uppercase text-sm">Contact Information</p>
-                                        <div className="row">
-                                        <div className="col-md-12">
-                                            <div className="form-group">
-                                            <label htmlFor="address" className="form-control-label">Address</label>
-                                            <input className="form-control" type="text" name='address' value={data.address} onChange={onChange} id="address" />
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </form>
                         </div>
